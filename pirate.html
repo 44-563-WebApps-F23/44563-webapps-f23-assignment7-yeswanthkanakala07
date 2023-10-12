@@ -85,7 +85,10 @@
       <button id="helpButton" onclick="showHelp()">HELP</button>
       
     </div>
-
+    <div>
+      <button id="Bonus" onclick="newGame()">Bonus Game</p>
+      
+    </div>
   </div>
   <div class="grid-container">
     <div class="search-location">
@@ -219,6 +222,9 @@
       document.getElementById("penalty").textContent = "Penalty is : " + penalty;
       lastCheck = position;
     }
+
+
+
     function help() {
       const rowColTreasure = { row: Math.floor(treasureLocation / 5), col: treasureLocation % 5 };
       const rowColLast = { row: Math.floor(lastCheck / 5), col: lastCheck % 5 };
@@ -239,6 +245,27 @@
       penalty += 2;
       document.getElementById("penalty").textContent = "Penalty is : " + penalty;
     }
+
+    function newGame() {
+    checkCount = 0;
+    penalty = 0;
+    lastCheck = 0;
+    gameOver = false;
+
+    treasureLocation = Math.floor(Math.random() * 25);
+    do {
+        trapLocation = Math.floor(Math.random() * 25);
+    } while (trapLocation === treasureLocation);
+
+    document.getElementById("locations").textContent = "Number of locations checked is : " + checkCount;
+    document.getElementById("penalty").textContent = "Penalty is : " + penalty;
+    document.getElementById("help").textContent = "Help report";
+
+    for (var i = 0; i < 25; i++) {
+        document.getElementById(ids[i]).src = "treasuredoor.png"
+    }
+}
+
 
   </script>
 
